@@ -1,4 +1,3 @@
-import tensorflow as tf
 from tensorflow.keras import models
 from tensorflow.keras.layers import Dense
 import matplotlib.pyplot as plt
@@ -51,6 +50,14 @@ class KerasExperiment:
                              epochs=10, batch_size=512
                              )
         # print(models[0].summary())
+
+
+def plot_losses(hist, epochs=0):
+    ep = range(epochs)
+    plt.plot(ep, hist.history['loss'], label='Training Loss')
+    plt.plot(ep, hist.history['val_loss'], 'o', label='Validation Loss')
+    plt.legend()
+    plt.show()
 
 
 if __name__ == '__main__':
